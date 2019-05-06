@@ -4,10 +4,19 @@ import { Query } from 'react-apollo';
 
 import { GET_ALL_USERS_QUERY } from '../lib/queries';
 
+const Grid = styled.div`
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(30px, 1fr));
+  justify-items: left;
+`;
+
 const RowContainer = styled.div`
   display: flex;
   flex-direction: row;
   background: #424242;
+  margin: 5px;
+  border-radius: 3px;
+  box-shadow: 5px 5px 5px #212121;
 `;
 
 const TextInput = styled.p`
@@ -22,20 +31,22 @@ interface Item {
 }
 
 const Entry = () => (
-  <Query query={GET_ALL_USERS_QUERY}>
-    {({ data, loading }: any) => {
-      if (loading) {
-        return <p>Loading...</p>;
-      }
-      return data.users.map((item: Item) => (
-        <RowContainer key={item.id}>
-          <TextInput>{item.name}</TextInput>
-          <TextInput>{item.trip}</TextInput>
-          <TextInput>date</TextInput>
-        </RowContainer>
-      ));
-    }}
-  </Query>
+  <Grid>
+    <Query query={GET_ALL_USERS_QUERY}>
+      {({ data, loading }: any) => {
+        if (loading) {
+          return <p>Loading...</p>;
+        }
+        return data.users.map((item: Item) => (
+          <RowContainer key={item.id}>
+            <TextInput>{item.name}</TextInput>
+            <TextInput>{item.trip}</TextInput>
+            <TextInput>date</TextInput>
+          </RowContainer>
+        ));
+      }}
+    </Query>
+  </Grid>
 );
 
 export default Entry;
