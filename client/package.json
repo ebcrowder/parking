@@ -14,12 +14,24 @@
   "license": "ISC",
   "dependencies": {
     "@zeit/next-typescript": "^1.1.1",
+    "apollo-boost": "^0.3.1",
+    "babel-plugin-styled-components": "^1.10.0",
+    "graphql": "^14.2.1",
     "next": "^8.1.0",
+    "next-with-apollo": "^3.4.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-apollo": "^2.5.5",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
+    "@types/next": "^8.0.5",
     "@types/react": "^16.8.16",
-    "@types/react-dom": "^16.8.4"
+    "@types/react-dom": "^16.8.4",
+    "@types/styled-components": "^4.1.14",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.4.5"
   }
 }

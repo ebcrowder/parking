@@ -1,26 +1,30 @@
-import React from 'react';
 import App, { Container } from 'next/app';
+import { ApolloProvider } from 'react-apollo';
+import { createGlobalStyle } from 'styled-components';
+import withApollo from '../lib/withApollo';
+
+const GlobalStyle = createGlobalStyle`
+  div#__next, html, body {
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 26px;
+    font-weight: 300;
+    margin: 0;
+  }
+`;
 
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
-
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, apollo } = this.props;
 
     return (
       <Container>
-        <Component {...pageProps} />
+        <ApolloProvider client={apollo}>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </ApolloProvider>
       </Container>
     );
   }
 }
 
-export default MyApp;
+export default withApollo(MyApp);
