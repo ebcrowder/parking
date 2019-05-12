@@ -6,22 +6,24 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node index.ts",
-    "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./"
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./",
+    "debug": "ts-node-dev --no-notify --respawn --inspect --transpileOnly ./"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.0.0",
-    "graphql": "^14.2.1",
+    "graphql": "^14.3.0",
     "graphql-yoga": "^1.17.4",
     "nexus": "^0.11.7",
     "nexus-prisma": "^0.3.7",
     "prisma-client-lib": "^1.30.4"
   },
   "devDependencies": {
+    "@types/dotenv": "^6.1.1",
     "ts-node": "^8.1.0",
-    "ts-node-dev": "^1.0.0-pre.35",
+    "ts-node-dev": "^1.0.0-pre.39",
     "typescript": "^3.4.5"
   }
 }

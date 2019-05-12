@@ -4,6 +4,9 @@ import * as path from 'path';
 import { stringArg, idArg } from 'nexus';
 import { prismaObjectType, makePrismaSchema } from 'nexus-prisma';
 import { GraphQLServer } from 'graphql-yoga';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const Query = prismaObjectType({
   name: 'Query',
@@ -36,6 +39,17 @@ const Mutation = prismaObjectType({
           trip
         })
     });
+
+    t.field('deleteUser', {
+      type: 'User',
+      args: {
+        id: idArg()
+      },
+      resolve: (_, { id }, ctx) =>
+        ctx.prisma.deleteUser({
+          id
+        })
+    });
   }
 });
 
@@ -57,4 +71,4 @@ const server = new GraphQLServer({
   schema,
   context: { prisma }
 });
-server.start(() => console.log('Server is running on http://localhost:4000'));
+server.start(() => console.log(`🚀 Server ready at http://localhost:4000`));

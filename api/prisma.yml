@@ -1,4 +1,5 @@
-endpoint: ${process.env.PRISMA_ENDPOINT}
+endpoint: ${env:PRISMA_ENDPOINT}
+secret: ${env:PRISMA_SECRET}
 datamodel: datamodel.prisma
 
 generate:
@@ -7,5 +8,4 @@ generate:
 
 hooks:
   post-deploy:
-    - prisma generate
     - npx nexus-prisma-generate --client ./generated/prisma-client --output ./generated/nexus-prisma
