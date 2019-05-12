@@ -6,8 +6,8 @@ import Modal from '../components/Modal';
 const Index = () => (
   <div>
     <ToggleModal
-      toggle={show => <button onClick={show}>Open</button>}
-      content={hide => (
+      toggle={(show: any) => <button onClick={show}>Open</button>}
+      content={(hide: any) => (
         <Modal>
           hi
           <button onClick={hide}>Close</button>

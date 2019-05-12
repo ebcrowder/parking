@@ -1,6 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Query } from 'react-apollo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 
 import { GET_ALL_USERS_QUERY } from '../lib/queries';
 
@@ -24,6 +26,13 @@ const TextInput = styled.p`
   margin: 10px;
 `;
 
+const Button = styled.button`
+  background: #424242;
+  border: #424242;
+  color: #ffffff;
+  font-size: 20px;
+`;
+
 interface Item {
   id: string;
   name: string;
@@ -42,6 +51,9 @@ const Entry = () => (
             <TextInput>{item.name}</TextInput>
             <TextInput>{item.trip}</TextInput>
             <TextInput>date</TextInput>
+            <Button onClick={() => alert('hi')}>
+              <FontAwesomeIcon icon={faTrashAlt} />
+            </Button>
           </RowContainer>
         ));
       }}
