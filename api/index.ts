@@ -4,9 +4,6 @@ import * as path from 'path';
 import { stringArg, idArg } from 'nexus';
 import { prismaObjectType, makePrismaSchema } from 'nexus-prisma';
 import { GraphQLServer } from 'graphql-yoga';
-import * as dotenv from 'dotenv';
-
-dotenv.config();
 
 const Query = prismaObjectType({
   name: 'Query',
