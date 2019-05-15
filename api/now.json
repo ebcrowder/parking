@@ -1,5 +1,11 @@
 {
   "name": "parking-app",
   "version": 2,
-  "builds": [{ "src": "index.ts", "use": "@now/node" }]
+  "builds": [{ "src": "index.ts", "use": "@now/node" }],
+  "build": {
+    "env": {
+      "PRISMA_ENDPOINT": "@PRISMA-ENDPOINT",
+      "PRISMA_SECRET": "@PRISMA-SECRET"
+    }
+  }
 }
