@@ -1,10 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
-
-import { GET_ALL_USERS_QUERY } from '../lib/queries';
+import { DELETE_USER } from '../lib/mutations';
+import { GET_ALL_USERS } from '../lib/queries';
 
 const Grid = styled.div`
   display: grid;
@@ -41,7 +41,7 @@ interface Item {
 
 const Entry = () => (
   <Grid>
-    <Query query={GET_ALL_USERS_QUERY}>
+    <Query query={GET_ALL_USERS}>
       {({ data, loading }: any) => {
         if (loading) {
           return <p>Loading...</p>;
@@ -51,9 +51,13 @@ const Entry = () => (
             <TextInput>{item.name}</TextInput>
             <TextInput>{item.trip}</TextInput>
             <TextInput>date</TextInput>
-            <Button onClick={() => alert('hi')}>
-              <FontAwesomeIcon icon={faTrashAlt} />
-            </Button>
+            <Mutation mutation={DELETE_USER}>
+              {deleteUser => (
+                <Button onClick={() => deleteUser(item.id)}>
+                  <FontAwesomeIcon icon={faTrashAlt} />
+                </Button>
+              )}
+            </Mutation>
           </RowContainer>
         ));
       }}
