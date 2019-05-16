@@ -4,10 +4,7 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "target": "esnext",
-    "sourceMap": true,
-    "paths": {
-      "*": ["*"]
-    }
+    "sourceMap": true
   },
   "include": ["*"],
   "exclude": ["node_modules"]
