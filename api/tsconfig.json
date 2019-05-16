@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "lib": ["esnext", "dom"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "target": "esnext",
     "sourceMap": true,
     "allowJs": true
-  },
-  "include": ["*"]
+  }
 }
