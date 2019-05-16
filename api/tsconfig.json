@@ -1,16 +1,14 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
     "target": "esnext",
-    "noImplicitAny": true,
-    "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "dist",
-    "baseUrl": ".",
     "paths": {
       "*": ["*"]
     }
   },
-  "include": ["*"]
+  "include": ["*"],
+  "exclude": ["node_modules"]
 }
