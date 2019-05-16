@@ -6,6 +6,5 @@
     "target": "esnext",
     "sourceMap": true
   },
-  "include": ["*"],
-  "exclude": ["node_modules"]
+  "include": ["*"]
 }
