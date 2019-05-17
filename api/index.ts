@@ -51,11 +51,15 @@ const Mutation = prismaObjectType({
     t.field('updateUser', {
       type: 'User',
       args: {
-        id: idArg()
+        id: idArg(),
+        name: stringArg(),
+        trip: stringArg()
       },
-      resolve: (_, { id }, ctx) =>
+      resolve: (_, { id, name, trip }, ctx) =>
         ctx.prisma.updateUser({
-          id
+          id,
+          name,
+          trip
         })
     });
   }
