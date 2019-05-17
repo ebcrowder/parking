@@ -47,6 +47,17 @@ const Mutation = prismaObjectType({
           id
         })
     });
+
+    t.field('updateUser', {
+      type: 'User',
+      args: {
+        id: idArg()
+      },
+      resolve: (_, { id }, ctx) =>
+        ctx.prisma.updateUser({
+          id
+        })
+    });
   }
 });
 
