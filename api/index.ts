@@ -1,14 +1,15 @@
 import { prisma } from './generated/prisma-client';
 import datamodelInfo from './generated/nexus-prisma';
 import * as path from 'path';
-import { stringArg, idArg } from 'nexus';
 import { prismaObjectType, makePrismaSchema } from 'nexus-prisma';
 import { GraphQLServer } from 'graphql-yoga';
+import * as cors from 'cors';
 
 const Query = prismaObjectType({
   name: 'Query',
   definition: t => t.prismaFields(['*'])
 });
+
 const Mutation = prismaObjectType({
   name: 'Mutation',
   definition: t => t.prismaFields(['*'])
@@ -32,4 +33,22 @@ const server = new GraphQLServer({
   schema,
   context: { prisma }
 });
-server.start(() => console.log(`🚀 Server ready at http://localhost:4000`));
+
+// address CORS issues
+server.express.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: false,
+    allowedHeaders: ['Content-Type', 'Authorization']
+  })
+);
+
+server.start(
+  {
+    cors: {
+      credentials: false,
+      origin: 'http://localhost:3000'
+    }
+  },
+  deetz => console.log(`🚀 Server ready at http://localhost:${deetz.port}`)
+);
