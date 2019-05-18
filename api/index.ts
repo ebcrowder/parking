@@ -7,62 +7,11 @@ import { GraphQLServer } from 'graphql-yoga';
 
 const Query = prismaObjectType({
   name: 'Query',
-  definition(t) {
-    t.prismaFields(['user']);
-    t.list.field('name', {
-      type: 'User',
-      resolve: (_, args, ctx) => ctx.prisma.users()
-    });
-    t.list.field('users', {
-      type: 'User',
-      resolve: (_, args, ctx) => ctx.prisma.users()
-    });
-  }
+  definition: t => t.prismaFields(['*'])
 });
-
 const Mutation = prismaObjectType({
   name: 'Mutation',
-  definition(t) {
-    t.prismaFields(['createUser']);
-    t.field('createUser', {
-      type: 'User',
-      args: {
-        name: stringArg(),
-        trip: stringArg()
-      },
-      resolve: (_, { name, trip }, ctx) =>
-        ctx.prisma.createUser({
-          name,
-          trip
-        })
-    });
-
-    t.field('deleteUser', {
-      type: 'User',
-      args: {
-        id: idArg()
-      },
-      resolve: (_, { id }, ctx) =>
-        ctx.prisma.deleteUser({
-          id
-        })
-    });
-
-    t.field('updateUser', {
-      type: 'User',
-      args: {
-        id: idArg(),
-        name: stringArg(),
-        trip: stringArg()
-      },
-      resolve: (_, { id, name, trip }, ctx) =>
-        ctx.prisma.updateUser({
-          id,
-          name,
-          trip
-        })
-    });
-  }
+  definition: t => t.prismaFields(['*'])
 });
 
 const schema = makePrismaSchema({
